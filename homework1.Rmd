@@ -1,0 +1,24 @@
+---
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r}
+setwd('C:/Users/Dear User/Desktop/R/homework1')#changes working directory
+rairuoho<-read.table('rairuoho.txt',header=T, sep="\t", dec=".")#read txt
+rairuoho$row <- NULL
+rairuoho$column <- NULL
+library(tidyr)
+rairuoho2 <- rairuoho %>% gather(key = day, value = length, day3:day8) # use the function 'gather' to reformat the table in order to have the day as a single variable
+rairuoho3 <- rairuoho2 %>% unite("spatial",spatial1:spatial2,sep = '_')#Merge variables Spatial1 and Spatial2 in order to obtain the following format for the spatial coordinates of an observation upper_left
+rairuoho3
+```
+
